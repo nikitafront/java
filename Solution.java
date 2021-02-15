@@ -41,7 +41,7 @@ public class Solution {
 
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
             list.add(scan.nextLine());
         }
         for (int i = 0; i < list.size() - 1; i++) {
