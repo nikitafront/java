@@ -1,0 +1,80 @@
+package com.example.projects;
+
+import java.util.Scanner;
+import java.util.Calendar;
+
+public class Person {
+
+    String name;
+    int age;
+    String sex;
+    String address;
+
+    public Person() {
+    }
+
+    public void printText(String str) {
+        System.out.println(str);
+    }
+
+    public Person(String name, int age, String sex, String address) {
+        this.name = name;
+        this.age = age;
+        this.address  = address;
+        this.sex  = sex;
+    }
+
+    String getName() {
+        return this.name;
+    }
+    int getAge() {
+            return this.age;
+    }
+    String getSex() {
+            return this.sex;
+    }
+    String getAddress() {
+            return this.address;
+    }
+    void setName(String name) {
+        this.name = name;
+    }
+    void setAge(int age) {
+        this.age = age;
+    }
+    void setSex(String sex) {
+        this.sex = sex;
+    }
+    void setAddress(String address) {
+        this.address = address;
+    }
+
+    public static void main(String[] args) {
+
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        Scanner scanner = new Scanner(System.in);
+
+        int arr[] = new int[100];
+        arr[0] = 1;
+
+        //Person project = new Person();
+        Person people1 = new Person("", 0,  "p", "");
+
+        System.out.println("Введите Ваше имя:");
+        people1.name = scanner.nextLine();
+        System.out.println("Введите Ваш возраст:");
+        people1.age = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Введите Ваш пол (гендер):");
+        people1.sex = scanner.nextLine();
+
+        System.out.println("Привет, " + people1.name + "!");
+        if (people1.age < 18) {
+            System.out.println("Так как тебе нет 18 лет, ты не можешь пройти дальше :(");
+        } else {
+            System.out.println("Проходи, тебя тут ждут :)");
+        }
+        System.out.println("Я знаю, что ты родился в " + (year - people1.age) + " году" );
+    }
+}
+
