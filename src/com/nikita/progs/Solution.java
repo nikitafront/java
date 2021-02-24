@@ -1,41 +1,46 @@
 package com.nikita.progs;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
-        String[] cats = new String[]{"васька", "мурка", "дымка", "рыжик", "серый", "снежок", "босс", "борис", "визя", "гарфи"};
-
-        Map<String, Cat> map = addCatsToMap(cats);
-
-        for (Map.Entry<String, Cat> pair : map.entrySet()) {
-            System.out.println(pair.getKey() + " - " + pair.getValue());
-        }
-
-        Calendar calendar = new GregorianCalendar();
-        System.out.println("This is " + calendar.DAY_OF_WEEK);
+        System.out.println(getCountTheSameFirstName(createMap(), "Sergey"));
+        System.out.println(getCountTheSameLastName(createMap(), "Popov"));
     }
 
-
-    public static Map<String, Cat> addCatsToMap(String[] cats) {
-        Map<String, Cat> list = new HashMap<String, Cat>();
-        for (String s : cats) {
-            list.put(s, new Cat(s));
-        }
-        return list;
+    public static Map<String, String> createMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("Sergey", "Popov");
+        map.put("Sergey", "Sergeev");
+        map.put("Yuri", "Sergeev");
+        map.put("Sergey", "Sergeev");
+        map.put("Alex", "Jackson");
+        map.put("Michael", "Popov");
+        map.put("Mark", "Popov");
+        map.put("Yuri", "Ivanov");
+        map.put("Yuri", "Zaycev");
+        map.put("Sergey", "Popov");
+        return map;
     }
 
-
-    public static class Cat {
-        String name;
-
-        public Cat(String name) {
-            this.name = name;
+    public static int getCountTheSameFirstName(Map<String, String> map, String name) {
+        int howSameNames = 0;
+        for (Map.Entry<String, String> entry : map.entrySet()){
+            String key = entry.getKey();
+            if (key.equals(name))
+                howSameNames++;
         }
+        return howSameNames;
+    }
 
-        @Override
-        public String toString() {
-            return name != null ? name.toUpperCase() : null;
+    public static int getCountTheSameLastName(Map<String, String> map, String lastName) {
+        int howSameLastNames = 0;
+        for (Map.Entry<String, String> entry : map.entrySet()){
+            String value = entry.getValue();
+            if (value.equals(lastName))
+                howSameLastNames++;
         }
+        return howSameLastNames;
     }
 }
